@@ -6,6 +6,7 @@ import gym.workout.api.dto.DadosListagemCliente;
 import gym.workout.api.models.Cliente;
 import gym.workout.api.repositories.ClienteRepository;
 import jakarta.transaction.Transactional;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
@@ -34,5 +36,13 @@ public class ClienteController {
         clienteRepository.save(cliente);
         URI uri = uriB.path("/clientes/{id}").buildAndExpand(cliente.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoCliente(cliente));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletarCliente(@PathVariable Long id) {
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+
+        cliente.ifPresent(cliente1 -> clienteRepository.delete(cliente1));
+        return ResponseEntity.noContent().build();
     }
 }
