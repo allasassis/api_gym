@@ -1,5 +1,6 @@
 package gym.workout.api.models;
 
+import gym.workout.api.dto.DadosAtualizacaoCliente;
 import gym.workout.api.dto.DadosCadastroCliente;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,5 +32,24 @@ public class Cliente {
         this.altura = dadosCadastroCliente.altura();
         this.peso = dadosCadastroCliente.peso();
         this.sedentarismo = dadosCadastroCliente.sedentarismo();
+    }
+
+    public void atualizarCliente(DadosAtualizacaoCliente dadosAtualizacaoCliente) {
+        if (dadosAtualizacaoCliente.nome() != null) {
+            this.nome = dadosAtualizacaoCliente.nome();
+        }
+        if (dadosAtualizacaoCliente.email() != null) {
+            this.email = dadosAtualizacaoCliente.email();
+        }
+        if (dadosAtualizacaoCliente.altura() != null) {
+            this.altura = dadosAtualizacaoCliente.altura();
+        }
+        if (dadosAtualizacaoCliente.peso() != null) {
+            this.peso = dadosAtualizacaoCliente.peso();
+        }
+        if (dadosAtualizacaoCliente.sedentarismo() != null) {
+            this.sedentarismo = dadosAtualizacaoCliente.sedentarismo();
+        }
+
     }
 }

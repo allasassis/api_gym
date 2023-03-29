@@ -1,5 +1,7 @@
 package gym.workout.api.controllers;
 
+import com.electronwill.nightconfig.core.conversion.Path;
+import gym.workout.api.dto.DadosAtualizacaoCliente;
 import gym.workout.api.dto.DadosCadastroCliente;
 import gym.workout.api.dto.DadosDetalhamentoCliente;
 import gym.workout.api.dto.DadosListagemCliente;
@@ -44,5 +46,14 @@ public class ClienteController {
 
         cliente.ifPresent(cliente1 -> clienteRepository.delete(cliente1));
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity atualizarCliente(@RequestBody DadosAtualizacaoCliente dadosAtualizacaoCliente, @PathVariable Long id) {
+        Cliente cliente = clienteRepository.getReferenceById(id);
+        cliente.atualizarCliente(dadosAtualizacaoCliente);
+
+        return ResponseEntity.ok(new DadosDetalhamentoCliente(cliente));
     }
 }
