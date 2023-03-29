@@ -1,0 +1,1 @@
+ALTER TABLE clientes CHANGE nivelSedentarismo sedentarismo ENUM('COMPLETAMENTE_SEDENTARIO','SEDENTARIO','ATIVO','ATLETA');

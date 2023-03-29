@@ -1,5 +1,6 @@
 package gym.workout.api.models;
 
+import gym.workout.api.dto.DadosCadastroCliente;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,5 +22,14 @@ public class Cliente {
     private Double altura;
     private Double peso;
 
-    private NivelSedentarismo nivelSedentarismo;
+    @Enumerated(EnumType.STRING)
+    private Sedentarismo sedentarismo;
+
+    public Cliente(DadosCadastroCliente dadosCadastroCliente) {
+        this.nome = dadosCadastroCliente.nome();
+        this.email = dadosCadastroCliente.email();
+        this.altura = dadosCadastroCliente.altura();
+        this.peso = dadosCadastroCliente.peso();
+        this.sedentarismo = dadosCadastroCliente.sedentarismo();
+    }
 }

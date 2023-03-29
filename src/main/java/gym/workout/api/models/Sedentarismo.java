@@ -1,6 +1,9 @@
 package gym.workout.api.models;
 
-public enum NivelSedentarismo {
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+public enum Sedentarismo {
 
     COMPLETAMENTE_SEDENTARIO,
     SEDENTARIO,
