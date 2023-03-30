@@ -1,0 +1,19 @@
+package gym.workout.api.models;
+
+public enum Exercicios {
+    SUPINO_RETO,
+    SUPINO_INCLINADO,
+    CROSSOVER,
+    CROSSOVER_SENTADO,
+    LEG_PRESS,
+    HACK,
+    AGACHAMENTO,
+    AGACHAMENTO_LIVRE,
+    PULLEY_FRENTE,
+    PULLEY_COSTAS,
+    ABDOMINAL,
+    CORRER_DEZ_MIN,
+    CORRER_VINTE_MIN,
+    CORRER_TRINTA_MIN,
+
+}
