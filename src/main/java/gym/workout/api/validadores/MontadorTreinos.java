@@ -22,13 +22,14 @@ public class MontadorTreinos {
             treino.getExerciciosList().add(Exercicios.CROSSOVER);
             treino.getExerciciosList().add(Exercicios.LEG_PRESS);
             treino.getExerciciosList().add(Exercicios.ABDOMINAL);
+            treino.getExerciciosList().add(Exercicios.CORRER_DEZ_MIN);
         }
         if (imc == IMC.EXCESSO_DE_PESO || imc == IMC.OBESIDADE_I) {
             treino.getExerciciosList().add(Exercicios.PULLEY_FRENTE);
             treino.getExerciciosList().add(Exercicios.CROSSOVER);
             treino.getExerciciosList().add(Exercicios.LEG_PRESS);
             treino.getExerciciosList().add(Exercicios.CROSSOVER_SENTADO);
-            treino.getExerciciosList().add(Exercicios.CORRER_DEZ_MIN);
+            treino.getExerciciosList().add(Exercicios.CORRER_VINTE_MIN);
         }
         if (imc == IMC.OBESIDADE_II || imc == IMC.OBESIDADE_III) {
             treino.getExerciciosList().add(Exercicios.PULLEY_COSTAS);

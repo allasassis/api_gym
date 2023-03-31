@@ -22,7 +22,7 @@ public class AcademiaController {
     private ClienteRepository clienteRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity mostrarTreino(@PathVariable Long id) {
+    public ResponseEntity<Treino> mostrarTreino(@PathVariable Long id) {
         Cliente cliente = clienteRepository.getReferenceById(id);
         Treino treino = montadorTreinos.montarTreino(cliente);
         return ResponseEntity.ok(treino);

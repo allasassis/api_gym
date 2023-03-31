@@ -1,6 +1,5 @@
 package gym.workout.api.controllers;
 
-import com.electronwill.nightconfig.core.conversion.Path;
 import gym.workout.api.dto.DadosAtualizacaoCliente;
 import gym.workout.api.dto.DadosCadastroCliente;
 import gym.workout.api.dto.DadosDetalhamentoCliente;
@@ -8,7 +7,6 @@ import gym.workout.api.dto.DadosListagemCliente;
 import gym.workout.api.models.Cliente;
 import gym.workout.api.repositories.ClienteRepository;
 import jakarta.transaction.Transactional;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
