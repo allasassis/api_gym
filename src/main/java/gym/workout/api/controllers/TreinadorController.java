@@ -50,9 +50,7 @@ public class TreinadorController {
     @DeleteMapping("/{id}")
     public ResponseEntity deletarTreinador(@PathVariable Long id) {
         Optional<Treinador> treinador = repository.findById(id);
-        if (treinador.isPresent()) {
-            repository.deleteById(id);
-        }
+        treinador.ifPresent(cliente1 -> repository.deleteById(cliente1.getId()));
         return ResponseEntity.noContent().build();
     }
 
