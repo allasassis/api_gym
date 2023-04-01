@@ -29,4 +29,10 @@ public class Agendamento {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    public Agendamento(LocalDateTime data, Treinador treinador, Cliente cliente) {
+        this.dataHora = data;
+        this.treinador = treinador;
+        this.cliente = cliente;
+    }
 }
