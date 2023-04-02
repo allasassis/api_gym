@@ -8,6 +8,7 @@ import gym.workout.api.models.Cliente;
 import gym.workout.api.models.Treino;
 import gym.workout.api.repositories.ClienteRepository;
 import gym.workout.api.validadores.MontadorTreinos;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
+@SecurityRequirement(name = "bearer-key")
 public class ClienteController {
 
     @Autowired

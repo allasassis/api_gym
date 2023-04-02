@@ -4,6 +4,7 @@ import gym.workout.api.dto.DadosAgendamentoTreino;
 import gym.workout.api.dto.DadosDetalhamentoAgendamento;
 import gym.workout.api.models.Agendamento;
 import gym.workout.api.validadores.ValidacaoAgendamento;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/agendamento")
+@SecurityRequirement(name = "bearer-key")
 public class AgendamentoController {
 
     @Autowired

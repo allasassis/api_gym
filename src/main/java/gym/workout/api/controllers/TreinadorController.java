@@ -7,6 +7,7 @@ import gym.workout.api.dto.DadosDetalhamentoTreinador;
 import gym.workout.api.dto.DadosListagemTreinador;
 import gym.workout.api.models.Treinador;
 import gym.workout.api.repositories.TreinadorRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/treinador")
+@SecurityRequirement(name = "bearer-key")
 public class TreinadorController {
 
     @Autowired
