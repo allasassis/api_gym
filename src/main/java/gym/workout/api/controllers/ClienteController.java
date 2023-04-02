@@ -5,7 +5,9 @@ import gym.workout.api.dto.DadosCadastroCliente;
 import gym.workout.api.dto.DadosDetalhamentoCliente;
 import gym.workout.api.dto.DadosListagemCliente;
 import gym.workout.api.models.Cliente;
+import gym.workout.api.models.Treino;
 import gym.workout.api.repositories.ClienteRepository;
+import gym.workout.api.validadores.MontadorTreinos;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,9 @@ public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private MontadorTreinos montadorTreinos;
 
     @GetMapping
     public ResponseEntity<List<DadosListagemCliente>> listarClientes() {
@@ -53,5 +58,12 @@ public class ClienteController {
         cliente.atualizarCliente(dadosAtualizacaoCliente);
 
         return ResponseEntity.ok(new DadosDetalhamentoCliente(cliente));
+    }
+
+    @GetMapping("/treino/{id}")
+    public ResponseEntity<Treino> mostrarTreino(@PathVariable Long id) {
+        Cliente cliente = clienteRepository.getReferenceById(id);
+        Treino treino = montadorTreinos.montarTreino(cliente);
+        return ResponseEntity.ok(treino);
     }
 }
