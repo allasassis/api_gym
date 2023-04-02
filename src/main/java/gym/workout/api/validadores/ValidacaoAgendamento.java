@@ -10,6 +10,8 @@ import gym.workout.api.repositories.TreinadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ValidacaoAgendamento {
 
@@ -22,9 +24,20 @@ public class ValidacaoAgendamento {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
+    @Autowired
+    private List<Validadores> validadores;
+
     public Agendamento agendar(DadosAgendamentoTreino dados) {
-        ValidacaoAgendamentoHorario validacaoAgendamentoHorario = new ValidacaoAgendamentoHorario();
-        validacaoAgendamentoHorario.validar(dados, agendamentoRepository);
+
+        if (!clienteRepository.existsById(dados.idCliente())) {
+            throw new ValidacaoException("ID do cliente não existe!");
+        }
+
+        if (!treinadorRepository.existsById(dados.idTreinador())) {
+            throw new ValidacaoException("ID do treinador não existe!");
+        }
+
+        validadores.forEach(validadores1 -> validadores1.validar(dados, agendamentoRepository));
 
         Cliente cliente = clienteRepository.getReferenceById(dados.idCliente());
         Treinador treinador = treinadorRepository.getReferenceById(dados.idTreinador());

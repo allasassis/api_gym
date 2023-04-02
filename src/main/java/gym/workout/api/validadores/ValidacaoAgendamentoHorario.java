@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ValidacaoAgendamentoHorario {
+public class ValidacaoAgendamentoHorario implements Validadores{
 
     public void validar(DadosAgendamentoTreino dados, AgendamentoRepository agendamentoRepository) {
 
